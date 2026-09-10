@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>starspell · the open sky, dressed — the sign sheet's two open calls</title>
+<style>
+  :root{--ink:#e8e4ff;--dim:#8a94c4;--gold:#e8c76a;--bg:#0a0e1f;--card:#121732;--line:#232a52;
+        --good:#7de8a0;--warn:#ffb066;--keep:#9fb4ff}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Georgia,'Times New Roman',serif;padding-bottom:96px}
+  @media(max-width:620px){body{padding-bottom:170px}}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 18px}
+  .crumb{font-size:11.5px;letter-spacing:.22em;color:var(--dim)}
+  h1{font-size:33px;color:var(--gold);letter-spacing:.06em;margin:.25em 0 .1em;text-shadow:0 0 22px rgba(232,199,106,.25)}
+  h2{color:var(--gold);letter-spacing:.05em;margin-top:2.6em;border-bottom:1px solid var(--line);padding-bottom:.35em;font-size:19px}
+  h3{color:var(--gold);letter-spacing:.05em;font-size:15.5px;margin:1.6em 0 .5em}
+  .sub{color:var(--dim);font-style:italic;margin-top:0;max-width:720px}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0;color:var(--dim);font-size:14px}
+  .note b{color:var(--ink)}
+  .rec{border-color:var(--gold);box-shadow:0 0 14px rgba(232,199,106,.14)}
+  a{color:var(--gold)}
+  .stage{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;margin-top:18px;justify-content:center}
+  .cardwrap{flex:0 0 auto;width:min(232px,100%)}
+  .cardwrap.big{width:min(300px,100%)}
+  .cardwrap svg{display:block;width:100%;height:auto;border-radius:10px}
+  .cap{font-size:11px;letter-spacing:.16em;color:var(--dim);text-align:center;margin:8px 0 4px}
+  .cost{font-size:11.5px;color:#5b6494;font-style:italic;line-height:1.5;margin-top:6px}
+  .cost b{color:var(--dim);font-style:normal}
+  .tblwrap{overflow-x:auto}
+  table.sweep{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+  table.sweep th{color:var(--gold);font-size:11px;letter-spacing:.14em;text-align:left;border-bottom:1px solid var(--line);padding:6px 8px}
+  table.sweep td{color:var(--dim);border-bottom:1px solid #1a2142;padding:7px 8px;vertical-align:top}
+  table.sweep td b{color:var(--ink)}
+  table.sweep td code{color:#9fb0e8;font-size:12px}
+  /* ---------- the BEGIN restraint strip ---------- */
+  .brdrow{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .brdcell{flex:0 0 auto;width:min(236px,100%)}
+  .brd{width:100%;aspect-ratio:330/54;border-radius:12px;border:1.5px solid #c9a94f;position:relative;
+       background:linear-gradient(180deg,#1c2344,#12172f);box-shadow:inset 0 0 0 1px rgba(201,169,79,.22),inset 0 0 18px rgba(9,12,30,.85),0 2px 10px rgba(0,0,0,.4);
+       display:flex;align-items:center;justify-content:center}
+  .brd .lbl{font:14px Georgia,serif;letter-spacing:.14em;white-space:nowrap}
+  .ink{color:#f4e6bd}
+  .ink.sweep1{background:linear-gradient(180deg,#f4e6bd,#f4e6bd),linear-gradient(110deg,transparent 42%,rgba(255,255,255,.6) 50%,transparent 58%);
+       background-size:100% 100%,260% 100%;background-position:0 0,130% 0;-webkit-background-clip:text;background-clip:text;color:transparent;
+       animation:swp 7s ease-in-out infinite}
+  .stamp{background:linear-gradient(180deg,#fff7dc,#ffe08d 35%,#d7b45c 62%,#9c7a28);
+       -webkit-background-clip:text;background-clip:text;color:transparent;
+       text-shadow:0 0 14px rgba(201,169,79,.28);font-weight:700}
+  .stamp.sweep1{background:linear-gradient(180deg,#fff7dc,#ffe08d 35%,#d7b45c 62%,#9c7a28),linear-gradient(110deg,transparent 42%,rgba(255,255,255,.75) 50%,transparent 58%);
+       background-size:100% 100%,260% 100%;background-position:0 0,130% 0;text-shadow:none;
+       animation:swp 7s ease-in-out infinite}
+  @keyframes swp{0%,55%{background-position:0 0,130% 0}75%,100%{background-position:0 0,-130% 0}}
+  .aur-breathe{animation:aurb 14s ease-in-out infinite alternate}
+  @keyframes aurb{from{opacity:.75}to{opacity:1}}
+  svg circle.twk{animation-name:twk;animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate}
+  svg .spin{animation-name:rot;animation-timing-function:linear;animation-iteration-count:infinite;transform-box:fill-box;transform-origin:center}
+  @keyframes twk{from{opacity:var(--a)}to{opacity:var(--d)}}
+  @keyframes rot{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){
+    .ink.sweep1,.stamp.sweep1,.aur-breathe,svg circle.twk,svg .spin{animation:none}
+    .stamp.sweep1{background:linear-gradient(180deg,#fff7dc,#ffe08d 35%,#d7b45c 62%,#9c7a28);-webkit-background-clip:text;background-clip:text}
+  }
+  /* ---------- verdicts ---------- */
+  .q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:20px 0}
+  .q .qt{color:var(--ink);font-size:15px;letter-spacing:.06em}
+  .q .qt b{color:var(--gold)}
+  .q .qd{color:var(--dim);font-size:13.5px;margin:6px 0 10px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{cursor:pointer;border:1px solid var(--line);background:#0d1228;color:var(--dim);border-radius:99px;padding:5px 14px;font:12.5px Georgia,serif;letter-spacing:.06em}
+  .chip.on{border-color:var(--gold);color:var(--gold);box-shadow:0 0 10px rgba(232,199,106,.25)}
+  .qnote{width:100%;margin-top:10px;background:#0d1228;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:7px 10px;font:14px Georgia,serif}
+  .prov{margin-top:44px;color:#5b6494;font-size:12px;font-style:italic;border-top:1px solid var(--line);padding-top:14px}
+  .bar{position:fixed;bottom:0;left:0;right:0;background:#0d1228ee;border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;backdrop-filter:blur(6px);flex-wrap:wrap;z-index:9}
+  .bar .cnt{font-size:13px;color:var(--ink);white-space:nowrap}
+  .bar .cnt b{color:var(--gold)}
+  .copy{cursor:pointer;border:1px solid var(--gold);background:var(--gold);color:#0a0e1f;border-radius:99px;padding:7px 18px;font:13px Georgia,serif;letter-spacing:.1em}
+  .copied{color:#7de8a0;font-size:12.5px;min-width:70px}
+  .barnote{flex:1 1 160px;color:#5b6494;font-size:11.5px;font-style:italic}
+  ul.tight{margin:8px 0;padding-left:20px;color:var(--dim);font-size:14px}
+  ul.tight li{margin:5px 0}
+  ul.tight b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb">STARSPELL · DESIGN REVIEW · 2026-09-10</div>
+  <h1>THE OPEN SKY, DRESSED</h1>
+  <p class="sub">The unsigned card is the one plate in the sign deck nobody painted — and BEGIN THE CLIMB is the one
+  label on the sheet that never learned to shine. Three dresses for the card, three voices for the letters, and the
+  question of whether the card itself should be the button.</p>
+
+  <div class="note"><b>Skylar's ask, verbatim (9/10, ~15:10, voice):</b> <i>"Design pass on 'The Open Sky' needs to
+  look prettier. 'Begin the climb' letters should shine more or remove and just click on the card."</i><br><br>
+  <b>How to rule:</b> tap a chip on each of the three numbered questions (they sit in their sections), add notes,
+  then COPY VERDICTS in the bottom bar and paste back to the console. Combinations are welcome in the notes —
+  the aurora can hang over either of the other two dresses.</div>
+
+  <h2>I · THE CARD TODAY, AND WHY IT READS PLAIN</h2>
+  <div class="stage">
+    <div class="cardwrap big" id="m-today"></div>
+    <div style="flex:1 1 300px;max-width:460px">
+      <p style="color:var(--dim);font-size:14px;margin-top:6px">The mock at left deals the <b style="color:var(--ink)">exact sky the game deals</b> —
+      the living field's 22 breathing stars and 3 slow sparks sit at their true seeded places (the deck re-deals the
+      identical sky every turn), and every 8–15 seconds a shooting star crosses, as it does on the phone. What's under
+      them is the problem:</p>
+      <ul class="tight">
+        <li><b>The wash is a stretched thumbnail.</b> The night behind the stars was baked at 160×240 in v0.23, when
+        sign cards were small art in a framed window. Since v0.79 went full-bleed it serves stretched to 404×706 —
+        about 2.5× blown up — so its 46 baked speckles land soft while the field's sprites above them stay crisp.</li>
+        <li><b>Its neighbors are paintings.</b> All twelve signs ship real 512×768 plates. The unsigned card is the
+        only one still wearing the placeholder, and it's the FIRST card every fresh deck opens on (slot 0 kept, v0.95).</li>
+        <li><b>What already works stays.</b> The v0.84 living field, the reading scrims, the crown name, the power
+        line and the HARD box are law in every direction below — the dress goes UNDER them.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>II · THREE DRESSES</h2>
+  <p style="color:var(--dim);font-size:14px;max-width:720px">Each is mocked on the real card geometry (404×706, rim,
+  scrims, crown and foot exactly where the code puts them), with the living field dealt on top from its true seed.
+  Every dress replaces only the stretched wash — one baked canvas, drawn once at first sheet-open and cached, the way
+  the wash itself is. The shared placeholder texture is never touched: a sign card whose painting fails to load still
+  borrows the old wash, byte-identical (the aries-fallback law sign-check pins).</p>
+  <div class="stage">
+    <div class="cardwrap"><div id="m-d1"></div>
+      <div class="cap">D1 · THE WHOLE HUNT</div>
+      <div class="cost">Every constellation of the wheel, faint at once — the one card that holds everything the
+      twelve are each a piece of. Real charts: all twelve asterisms are drawn from the shipped star data (the five
+      beast-borrowed signs included), nameless like the campaign chart before a beast falls.<br>
+      <b>Costs:</b> one 'opensky' bake at capped R2 ≈ <b>4.6 MB</b> (≈3 painted plates; full-R knob ≈9 MB) · bake
+      ~15 ms once · <b>zero</b> new sprites, Graphics, files, or motion · census pins hold (3 Graphics · 22 dots ·
+      3 sparks).</div>
+    </div>
+    <div class="cardwrap"><div id="m-d2"></div>
+      <div class="cap">D2 · THE MEADOW</div>
+      <div class="cost">The home meadow's own horizon rises at the card's foot — hills, grass filaments, the dark
+      ridge grown real — under a deeper night. The classic climb begins where every climb begins: the place you're
+      already standing. Fireflies deliberately left out: the pinned field IS the card's motion.<br>
+      <b>Costs:</b> same single-bake path and price as D1 (≈<b>4.6 MB</b> at capped R2) · zero sprites/Graphics/files ·
+      census pins hold · the silhouette recipe is the meadow's own hill math, re-run at bake time.</div>
+    </div>
+    <div class="cardwrap"><div id="m-d3"></div>
+      <div class="cap">D3 · THE AURORA VEIL</div>
+      <div class="cost">A slow aurora graded in the house palette (the water-teal, the wash's own violet, one gold
+      whisper) hanging high on the card, breathing on a ~14 s cycle. Pretty even stilled — ?twinkle=0 and reduced
+      motion rest it at its base alpha, the living-field seam it inherits.<br>
+      <b>Costs:</b> one soft half-res veil bake ≈ <b>2 MB</b> · <b>+1</b> Image sprite on the card (its own texture
+      key — the dot/spark counts the suite pins are untouched) · +1 tween in the layer's ledger · zero Graphics ·
+      layers over D1 or D2 for the price of itself.</div>
+    </div>
+  </div>
+  <div class="note"><b>Laws all three keep</b> (the reason none of them frightens the suites): display order stays
+  wash → dress → living field → reading scrims (v0.84's order law); the shared 'zodsky' texture is never re-baked;
+  nothing is tinted (bakes, not tints — the Canvas shim never enters); the open-sky card's pinned census — exactly
+  <b>3 Graphics, 22 dots, 3 sparks</b> — survives every direction, so sign-check (129) needs <b>zero edits</b>, and
+  would only <i>gain</i> a pin naming the new texture. signlevel 86 · hard 108 · endless 95 stay zero-edit.</div>
+  <div id="q1host"></div>
+
+  <h2>III · BEGIN, OR THE CARD ITSELF</h2>
+  <p style="color:var(--dim);font-size:14px;max-width:720px">The truth about today's button: BEGIN THE CLIMB is
+  u16 letters in flat parchment ink (<code style="color:#9fb0e8">#f4e6bd</code>) on the painted gold-braid button —
+  the one label in the sheet's frame with none of the wordmark's gold. Meanwhile the sheet's headline died in v0.79,
+  which makes BEGIN <b style="color:var(--ink)">the only words left that say this screen starts a climb</b>. That
+  fact shapes all three answers.</p>
+
+  <h3>A · THE LETTERS SHINE — three restraint levels</h3>
+  <div class="brdrow">
+    <div class="brdcell"><div class="brd"><span class="lbl ink">BEGIN THE CLIMB</span></div><div class="cap">TODAY — FLAT PARCHMENT</div></div>
+    <div class="brdcell"><div class="brd"><span class="lbl ink sweep1">BEGIN THE CLIMB</span></div><div class="cap">A1 · WHISPER — today's ink, a light passes</div></div>
+    <div class="brdcell"><div class="brd"><span class="lbl stamp">BEGIN THE CLIMB</span></div><div class="cap">A2 · VOICE — the wordmark's gold stamp, still</div></div>
+    <div class="brdcell"><div class="brd"><span class="lbl stamp sweep1">BEGIN THE CLIMB</span></div><div class="cap">A3 · SHINE — the stamp + the ~7s glimmer</div></div>
+  </div>
+  <div class="cost" style="max-width:720px;margin:10px auto 0">A2/A3 use the exact letterpress ramp the title and every
+  gold banner already wear (#fff7dc → #ffe08d → #d7b45c → #9c7a28 with the baked top-sheen) — BEGIN joins the family
+  instead of imitating it. Stamp bakes are cached per label text, all five languages; the German
+  "DEN AUFSTIEG BEGINNEN" gets the same scale-to-fit guard the settings title uses. The glimmer is one masked
+  highlight + one ledgered tween, stilled by ?twinkle=0 / reduced motion. <b>Zero suite edits</b> — the button object
+  and its texture family don't move, so every harness that finds BEGIN by its braid keeps finding it.</div>
+
+  <h3>B · THE BUTTON GOES — the card is the button</h3>
+  <div class="stage">
+    <div class="cardwrap big" id="m-sheetB"></div>
+    <div class="cardwrap big" id="m-tapmap"></div>
+  </div>
+  <p style="color:var(--dim);font-size:14px;max-width:720px">The input truth that makes B cheap to build: the card's
+  whole face is <i>already</i> one interactive swipe zone, and a press-and-release on it with no drag already happens —
+  today it does nothing. B is one UP-handler on that standing zone. The map at right is the sheet's real tap
+  anatomy at 420×800 design units, from the shipped container order (display order IS input order — the topOnly law):</p>
+  <div class="tblwrap"><table class="sweep">
+    <tr><th>REGION</th><th>OBJECT</th><th>ON THE WAY DOWN</th><th>ON THE UP</th></tr>
+    <tr><td><b>Card face</b> 404×706 <span style="color:#e8c76a">■</span></td><td>the swipe zone (exists today)</td>
+        <td>arms the drag; neighbor cards wake</td>
+        <td><b>&lt;8u travel → BEGIN (the new rule)</b> · 8u–134u → deck settles, nothing fires · ≥134u or a flick (&gt;18u at &gt;0.45u/ms) → the deck turns, nothing fires</td></tr>
+    <tr><td><b>HARD</b> 190×44 @ y592 <span style="color:#9fc4ff">■</span></td><td>hardZone (campaign only)</td><td>arms the drag too</td><td>&lt;8u → toggles hard — a tap here can never begin</td></tr>
+    <tr><td><b>✕</b> 48×48 @ (392,44) <span style="color:#9fc4ff">■</span></td><td>xB</td><td>arms its own check</td><td>&lt;8u → closes the sheet</td></tr>
+    <tr><td><b>‹ ›</b> 48×48 @ (30/390, 365) <span style="color:#9fc4ff">■</span></td><td>arrows</td><td>turns at once</td><td>—</td></tr>
+    <tr><td><b>Veil slivers</b> — the 12u crown band + 8u side hairlines <span style="color:#ff8a70">■</span></td><td>veil</td><td>closes the sheet</td><td>—</td></tr>
+    <tr><td><b>Retired in B</b>: BEGIN 330×54 @ y755 + its 420×82 catch band (dashed)</td><td colspan="3">the button, its label and the near-miss catcher all go; the freed ~90 units stay quiet night (growing the card into them is a separate geometry card — v0.79's dial 4, priced apart, not assumed)</td></tr>
+  </table></div>
+  <p style="color:var(--dim);font-size:14px;max-width:720px"><b style="color:var(--ink)">Why a swipe can never
+  false-fire a begin:</b> begin rides the UP under the same 8-unit travel law that already guards ✕ (v0.79) and the
+  HARD box (v0.70) — two shipped controls that sit ON this same swipe surface and have never mis-fired against it.
+  A swipe that dies short of the turn threshold is a <i>settle</i>, not a tap: 8u–134u of travel releases into the
+  spring-back with nothing fired. The `moving` guard also refuses taps while the deck is mid-turn, exactly as BEGIN
+  refuses them today.</p>
+  <div class="note"><b>What B honestly costs:</b><br>
+  1 · <b>The endless door begins at once.</b> BEGIN on the endless picker doesn't open a chart — it pins the sign and
+  RISES. Under B, one idle tap on a pretty card starts a real climb (the campaign door only opens the map — one ✕
+  undoes it). This is B's sharpest edge and it cannot be dulled without a confirm sheet nobody wants.<br>
+  2 · <b>The sheet loses its only words.</b> With the v0.79 headline gone and the button gone, a first-time player
+  faces a wordless gallery. The mock ships the compromise: a whisper — <i>"tap your card to begin"</i> — in the freed
+  band (+5 strings, one per language).<br>
+  3 · <b>The first sister-suite edits since v0.70.</b> hard-check (341, 514), endless-check and sign-check all enter
+  climbs by tapping the braid button they find by texture; B rewrites those sites to card-taps and adds the
+  no-false-fire checks (settle-release ≠ begin, island taps ≠ begin). Priced in §IV — it's real work, not a law
+  broken; the zero-edit record just ends.</div>
+
+  <h3>C · BOTH — the shined button anchors, the card answers too</h3>
+  <div class="stage">
+    <div class="cardwrap big" id="m-sheetC"></div>
+    <div style="flex:1 1 300px;max-width:460px">
+      <p style="color:var(--dim);font-size:14px;margin-top:6px">The button stays exactly where it stands, wearing A's
+      gold (shown at A2; A3 adds the strip's glimmer). The card-tap rides beside it under B's full rule set — same
+      8-unit law, same flick guard, same `moving` refusal. The catch band under the button <b style="color:var(--ink)">stays</b>:
+      with a button present, near-misses still deserve absorbing.</p>
+      <p style="color:var(--dim);font-size:14px">Suite bill: identical to B's card-tap checks (the new begin path needs
+      proving) — but nothing is rewritten, only added: every harness that taps the braid keeps working untouched,
+      because the braid is still there.</p>
+      <div class="note rec"><b>★ RECOMMENDED: C, with the stamp at A2 or A3.</b><br>
+      With the headline gone since v0.79, BEGIN is the only phrase left that tells a first-timer this sheet starts a
+      climb — so the teacher stays, dressed at last in the wordmark's own gold, which is everything the "shine" ask
+      actually wants. And the thumb that taps the plate itself gets answered instead of ignored: the tap costs one
+      UP-handler on a zone that already exists, guarded by the same 8-unit law that has kept ✕ and HARD honest on
+      this exact surface since v0.70.</div>
+    </div>
+  </div>
+  <div id="q2host"></div>
+  <div id="q3host"></div>
+
+  <h2>IV · WHAT BUILDING IT WOULD MEAN</h2>
+  <div class="note">
+  <b>Three separate cards, each firing only on its own "done and agreed":</b><br>
+  1 · <b>the dress</b> — one 'opensky' canvas baked from shipped chart data at first sheet-open (capped R2 ≈4.6 MB;
+  full-R knob ≈9 MB named, not assumed), display order wash→dress→field→scrims, 'zodsky' untouched
+  (aries-fallback byte-identical), sign-check gains a texture pin — <b>~0.5–1 day</b> including the DPR-3 on-device
+  look (mocks here are SVG approximations; the bake is judged on a phone, the taurus-blend precedent).<br>
+  2 · <b>the shine</b> — the ssGoldTex stamp keyed per label ×5 languages with the de scale guard; A3's glimmer =
+  one masked highlight Image + one ledgered tween, stilled by ?twinkle=0 / reduced motion — <b>~0.5 day, zero suite
+  edits</b>.<br>
+  3 · <b>the card-tap</b> (B or C's tap) — one UP-handler on the standing swipe zone (8u travel + flick + moving
+  guards), C keeps button and catch band, B also retires both and ships the 5-string whisper — <b>~0.5 day</b> +
+  <b>~0.5 day of harness</b>: sign-check begin sites, hard-check 341/514, endless-check entries (rewritten under B,
+  merely joined under C) plus the new no-false-fire checks. The first sister-suite edits since v0.70, priced here
+  and chosen knowingly or not at all.<br><br>
+  <b>Named honestly:</b> the full-card bake is the game's biggest texture in any direction (the knob halves it);
+  an idle tap on the endless door under B/C starts a real climb (C keeps the button as the honest target, which is
+  half the argument for it); the freed 90 units under B are NOT spent here — growing the card is its own geometry
+  card; nothing in any direction touches the wire, the profile, or a single byte outside game.js/strings.js and the
+  suites.<br><br>
+  <b>Nothing here is built.</b> This page is a look, not a queue item — each card fires only on "done and agreed",
+  separately.</div>
+
+  <h2>FOR SKYLAR — ANSWER BY NUMBER</h2>
+  <p style="color:var(--dim);font-size:14px">The three calls live in their sections — <a href="#q1">1 · the dress</a> ·
+  <a href="#q2">2 · begin, or the card</a> · <a href="#q3">3 · how loud the shine</a>. Tap chips, add notes, then
+  COPY VERDICTS below and paste back to the console.</p>
+
+  <div class="prov">Astro (Skylar's console) · 2026-09-10 · built on Skylar's words quoted verbatim at the head of this
+  page · sources: live game read at v0.95.0 (6d344481) — signSheet/mkCard, ssOpenSkyAlive, ssZodSkyTex/ssZodScrimTex,
+  ssGoldTex, ssBtn and BTN_INK read whole; tools/sign-check.mjs (129) census + living-sky pins, tap-sign-check (56),
+  hard-check begin sites; star charts, palettes and the seeded field dealt verbatim from data.js/game.js (the mocks
+  run the same LCG the card runs) · the in-flight v0.96.0 settings-door work was read in the tree and touches no
+  sign-sheet byte · sibling looks: <a href="https://skypilot82.github.io/starspell-turning-sky/">the turning sky</a> ·
+  <a href="https://skypilot82.github.io/starspell-under-one-sky/">under one sky</a></div>
+</div>
+
+<div class="bar">
+  <span class="cnt"><b id="ruled">0</b> / 3 ruled</span>
+  <span class="barnote">chips + notes save on this device; COPY VERDICTS builds the paste-back block</span>
+  <button class="copy" onclick="copyVerdicts()">COPY VERDICTS</button>
+  <span class="copied" id="copied"></span>
+</div>
+
+<script>
+/* ============ the real recipes, quoted ============ */
+// the game's own LCG (game.js ssOpenSkyAlive seed 13, ssZodSkyTex seed 7)
+function lcg(seed){var s=seed;return function(){s=(s*16807)%2147483647;return s/2147483647}}
+var STAR_COLORS=['#cfd8ff','#cfd8ff','#cfd8ff','#ffe9c9','#ffd1dc','#c9fff2'];
+var CW=404,CH=706;
+// the living field, dealt in the code's own call order — same sky as the phone
+function dealField(){
+  var r=lcg(13),dots=[],heroes=[],i;
+  for(i=0;i<22;i++){
+    var sz=2.2+r()*3.2, x=(r()-.5)*(CW-24), y=-CH/2+16+r()*(CH-96), a=.3+r()*.5;
+    var tint=STAR_COLORS[Math.floor(r()*STAR_COLORS.length)];
+    var dim=a*(.2+r()*.35), dur=1300+r()*2600, dly=r()*2400;
+    dots.push({sz:sz,x:x,y:y,a:a,tint:tint,dim:dim,dur:dur,dly:dly});
+  }
+  for(i=0;i<3;i++){
+    var hsz=11+r()*6, hx=(r()-.5)*(CW-60), hy=-CH/2+40+r()*CH*.62, ha=.4+r()*.18;
+    var spin=46000+r()*34000, hdur=2200+r()*1800, hdly=r()*2000;
+    heroes.push({sz:hsz,x:hx,y:hy,a:ha,spin:spin,dur:hdur,dly:hdly});
+  }
+  return {dots:dots,heroes:heroes};
+}
+var FIELD=dealField();
+// the zodsky speckles (seed 7, 160×240 texture space) — drawn blurred at the true ~2.5× stretch
+function dealSpeckles(){
+  var r=lcg(7),out=[],i;
+  for(i=0;i<46;i++){var x=r()*160,y=r()*240*.9,rad=.5+r()*1.1,al=.18+r()*.5;out.push({x:x,y:y,r:rad,a:al})}
+  return out;
+}
+// the twelve charts, verbatim from data.js (five borrow their beast's stars, as ssZodiacGlyph does)
+var ELC={fire:'#ffa94d',earth:'#a8d883',air:'#9fc4ff',water:'#6fe0d0'};
+var ZD=[
+ {id:'aries',el:'fire',st:[[-60,-20],[-24,-32],[10,-30],[40,-6],[48,18]],ed:[[0,1],[1,2],[2,3],[3,4]]},
+ {id:'taurus',el:'earth',st:[[-16,18],[-28,2],[-38,-14],[-2,2],[8,-12],[-58,-34],[-74,-52],[26,-34],[40,-56],[30,4],[58,-2],[80,10],[66,30],[70,52],[4,36],[0,58],[28,34],[30,56],[48,-24],[54,-28],[58,-22],[52,-18],[58,-30]],ed:[[2,1],[1,0],[0,3],[3,4],[2,5],[5,6],[4,7],[7,8],[3,9],[9,10],[10,11],[11,12],[12,13],[0,14],[14,15],[9,16],[16,17]]},
+ {id:'gemini',el:'air',st:[[-28,-58],[30,-52],[-34,-30],[-42,-2],[-48,26],[-36,52],[-64,34],[24,-26],[34,2],[28,28],[44,52],[60,30]],ed:[[0,2],[2,3],[3,4],[4,5],[4,6],[1,7],[7,8],[8,9],[9,10],[9,11],[2,7],[3,8]]},
+ {id:'cancer',el:'water',st:[[-20,0],[0,-12],[20,0],[14,16],[-14,16],[-38,-8],[-60,-20],[-76,-8],[-88,-20],[-72,-34],[38,-8],[60,-20],[76,-8],[88,-20],[72,-34],[-26,26],[-34,44],[0,28],[0,46],[26,26],[34,44],[-8,-24],[8,-24]],ed:[[0,1],[1,2],[2,3],[3,4],[4,0],[0,5],[5,6],[6,7],[7,8],[7,9],[2,10],[10,11],[11,12],[12,13],[12,14],[4,15],[15,16],[3,17],[17,18],[3,19],[19,20],[1,21],[1,22]]},
+ {id:'leo',el:'fire',st:[[-24,30],[-32,10],[-22,-12],[-34,-30],[-52,-36],[-64,-22],[-70,-6],[8,-14],[40,-22],[70,-10],[44,8],[-28,54],[42,34],[50,56],[8,52],[82,-24]],ed:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[0,2],[2,7],[7,8],[8,9],[9,15],[8,10],[10,0],[0,11],[10,12],[12,13],[7,14]]},
+ {id:'virgo',el:'earth',st:[[-72,44],[-38,20],[-10,4],[18,-8],[2,-34],[-18,-56],[46,-24],[74,-40],[40,18],[66,36]],ed:[[0,1],[1,2],[2,3],[3,4],[4,5],[3,6],[6,7],[3,8],[8,9]]},
+ {id:'libra',el:'air',st:[[0,-52],[-52,-16],[44,-24],[-58,28],[-44,52],[38,24],[54,50]],ed:[[0,1],[0,2],[1,2],[1,3],[3,4],[2,5],[5,6]]},
+ {id:'scorpio',el:'water',st:[[-84,-38],[-66,-52],[-72,-18],[-52,-30],[-36,-22],[-20,-12],[-8,4],[-2,20],[4,36],[14,50],[30,58],[48,56],[62,46],[70,30],[64,14],[50,6]],ed:[[0,3],[1,3],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,12],[12,13],[13,14],[14,15]]},
+ {id:'sagittarius',el:'fire',st:[[10,-58],[-4,-44],[26,-46],[0,-22],[20,-26],[30,-8],[16,4],[-4,0],[-10,-12],[-24,-18],[-44,-58],[-56,-38],[-48,-16],[-30,-38],[-70,-44],[44,-14],[66,-8],[80,-18],[90,-4],[2,18],[-2,40],[4,60],[62,12],[70,34],[62,58]],ed:[[0,1],[0,2],[1,3],[2,4],[3,4],[4,5],[5,6],[6,7],[7,8],[8,3],[8,9],[1,11],[10,11],[11,12],[13,14],[2,13],[5,15],[15,16],[16,17],[17,18],[6,19],[19,20],[20,21],[16,22],[22,23],[23,24]]},
+ {id:'capricorn',el:'earth',st:[[-72,-30],[-62,-10],[-34,10],[-2,26],[30,26],[56,8],[70,-24],[40,-20],[-16,-24]],ed:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,0]]},
+ {id:'aquarius',el:'air',st:[[28,-46],[12,-58],[44,-56],[24,-26],[-8,-22],[-42,-30],[-66,-6],[42,-4],[26,14],[42,32],[22,52],[50,56]],ed:[[1,0],[2,0],[0,3],[3,4],[4,5],[5,6],[3,7],[7,8],[8,9],[9,10],[10,11]]},
+ {id:'pisces',el:'water',st:[[52,44],[18,34],[-14,26],[-44,22],[-66,14],[-84,20],[-86,36],[-68,42],[-52,34],[46,16],[40,-12],[34,-40],[24,-58],[44,-60]],ed:[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,3],[0,9],[9,10],[10,11],[11,12],[12,13],[13,11]]}
+];
+
+/* ============ svg helpers ============ */
+function washDefs(s,dark){
+  return '<linearGradient id="wash'+s+'" x1="0" y1="0" x2="0" y2="1">'
+   +'<stop offset="0" stop-color="#0c1030"/><stop offset=".42" stop-color="#2a2558"/>'
+   +'<stop offset=".72" stop-color="#4d3a72"/><stop offset=".92" stop-color="#7a4a7c"/>'
+   +'<stop offset="1" stop-color="#9a5f7e"/></linearGradient>'
+   +'<linearGradient id="scrim'+s+'" x1="0" y1="0" x2="0" y2="1">'
+   +'<stop offset="0" stop-color="rgba(7,10,26,0)"/><stop offset=".45" stop-color="rgba(7,10,26,.44)"/>'
+   +'<stop offset="1" stop-color="rgba(7,10,26,.94)"/></linearGradient>'
+   +'<clipPath id="clip'+s+'"><rect x="0" y="0" width="404" height="706" rx="16"/></clipPath>'
+   +'<filter id="soft'+s+'"><feGaussianBlur stdDeviation="1.15"/></filter>'
+   +'<filter id="glow'+s+'" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.4"/></filter>'
+   +'<filter id="aur'+s+'" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="11"/></filter>';
+}
+function ridgePath(scaleX,scaleY,yBase){
+  var d='M0 '+yBase,x;
+  for(x=0;x<=160;x+=10){var y=240-(10+5*Math.sin(x/160*9.4)+3*Math.cos(x/160*21));d+=' L'+(x*scaleX).toFixed(1)+' '+(y*scaleY).toFixed(1)}
+  return d+' L404 '+yBase+' Z';
+}
+function speckles(s){
+  var sp=dealSpeckles(),h='<g filter="url(#soft'+s+')">',i;
+  for(i=0;i<sp.length;i++){var p=sp[i];
+    h+='<circle cx="'+(p.x*2.525).toFixed(1)+'" cy="'+(p.y*2.9417).toFixed(1)+'" r="'+(p.r*2.72).toFixed(2)+'" fill="rgba(232,226,255,'+p.a.toFixed(2)+')"/>';
+  }
+  return h+'</g>';
+}
+function sparkPath(sz){var q=(sz*.2).toFixed(1);return 'M0 -'+sz+' L'+q+' -'+q+' L'+sz+' 0 L'+q+' '+q+' L0 '+sz+' L-'+q+' '+q+' L-'+sz+' 0 L-'+q+' -'+q+' Z'}
+function fieldSVG(s,still){
+  var h='<g>',i;
+  for(i=0;i<FIELD.dots.length;i++){var d=FIELD.dots[i];
+    h+='<circle class="twk" cx="'+(202+d.x).toFixed(1)+'" cy="'+(353+d.y).toFixed(1)+'" r="'+(d.sz/2).toFixed(2)
+     +'" fill="'+d.tint+'" style="--a:'+d.a.toFixed(2)+';--d:'+d.dim.toFixed(2)+';opacity:'+d.a.toFixed(2)
+     +';animation-duration:'+Math.round(d.dur)+'ms;animation-delay:'+Math.round(d.dly)+'ms"/>';
+  }
+  for(i=0;i<FIELD.heroes.length;i++){var e=FIELD.heroes[i];
+    h+='<g class="spin" style="animation-duration:'+Math.round(e.spin)+'ms" transform="translate('+(202+e.x).toFixed(1)+' '+(353+e.y).toFixed(1)+')">'
+     +'<path d="'+sparkPath(e.sz/2)+'" fill="#eef2ff" opacity="'+e.a.toFixed(2)+'"/></g>';
+  }
+  h+='<g class="shoot" opacity="0"><circle r="4.2" fill="#fff2c9"/><circle r="3.1" fill="#cfe0ff" opacity=".55"/><circle r="2.3" fill="#cfe0ff" opacity=".4"/><circle r="1.6" fill="#cfe0ff" opacity=".28"/></g>';
+  return h+'</g>';
+}
+function chromeSVG(s){
+  var h='';
+  h+='<rect x="0" y="454" width="404" height="252" fill="url(#scrim'+s+')"/>';
+  h+='<g transform="translate(0,148) scale(1,-1)"><rect x="0" y="0" width="404" height="148" fill="url(#scrim'+s+')" opacity=".72"/></g>';
+  h+='<text x="202" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="24" letter-spacing="1.5" fill="#b9c2e6" filter="url(#glow'+s+')" opacity=".85">THE OPEN SKY</text>';
+  h+='<text x="202" y="46" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="24" letter-spacing="1.5" fill="#c9d2f2">THE OPEN SKY</text>';
+  h+='<text x="202" y="77" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="12.5" letter-spacing="1" fill="#d8d2bd">THE UNSIGNED CLIMB</text>';
+  // HARD row (y580) + desc (y600ish) + rim
+  h+='<g transform="translate(202,580)"><rect x="-48" y="-7.5" width="15" height="15" rx="3" fill="#121628" fill-opacity=".7" stroke="#8a94c4" stroke-opacity=".5" stroke-width="1.2"/>'
+   +'<text x="-25" y="4" font-family="Georgia,serif" font-size="11" letter-spacing="1" fill="#9aa3cc">HARD</text></g>';
+  h+='<text x="202" y="608" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="11.5" fill="#e6dfc8">No sign, no power — the classic climb,</text>';
+  h+='<text x="202" y="624" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="11.5" fill="#e6dfc8">as the first stars saw it.</text>';
+  h+='<rect x="0.75" y="0.75" width="402.5" height="704.5" rx="15.25" fill="none" stroke="#b9c2e6" stroke-opacity=".75" stroke-width="1.5"/>';
+  h+='<rect x="5" y="5" width="394" height="696" rx="11" fill="none" stroke="#b9c2e6" stroke-opacity=".25" stroke-width=".7"/>';
+  return h;
+}
+function dressToday(s){return '<rect width="404" height="706" fill="url(#wash'+s+')"/>'+speckles(s)+'<path d="'+ridgePath(2.525,2.9417,706)+'" fill="#0e0c22"/>'}
+function dressHunt(s){
+  var h='<rect width="404" height="706" fill="url(#wash'+s+')"/><rect width="404" height="706" fill="rgba(6,8,26,.38)"/>';
+  var cols=[68,202,336],rows=[130,240,350,460],k=.34,i;
+  for(i=0;i<12;i++){
+    var z=ZD[i],cx=cols[i%3],cy=rows[Math.floor(i/3)],col=ELC[z.el],e,j;
+    h+='<g transform="translate('+cx+' '+cy+')" opacity=".8">';
+    for(e=0;e<z.ed.length;e++){var a=z.st[z.ed[e][0]],b=z.st[z.ed[e][1]];
+      h+='<line x1="'+(a[0]*k).toFixed(1)+'" y1="'+(a[1]*k).toFixed(1)+'" x2="'+(b[0]*k).toFixed(1)+'" y2="'+(b[1]*k).toFixed(1)+'" stroke="'+col+'" stroke-opacity=".17" stroke-width="1.1"/>';
+    }
+    for(j=0;j<z.st.length;j++){
+      h+='<circle cx="'+(z.st[j][0]*k).toFixed(1)+'" cy="'+(z.st[j][1]*k).toFixed(1)+'" r="'+(j%3===0?2.4:1.7)+'" fill="'+col+'" fill-opacity=".4"/>';
+    }
+    h+='</g>';
+  }
+  h+='<path d="'+ridgePath(2.525,2.9417,706)+'" fill="#0e0c22"/>';
+  return h;
+}
+function dressMeadow(s){
+  var h='<rect width="404" height="706" fill="url(#wash'+s+')"/><rect width="404" height="706" fill="rgba(6,8,26,.25)"/>';
+  h+='<ellipse cx="290" cy="600" rx="105" ry="26" fill="#e8ddc2" opacity=".07" filter="url(#aur'+s+')"/>';
+  h+='<path d="M0 706 L0 594 Q80 570 170 588 Q250 604 300 590 Q360 574 404 588 L404 706 Z" fill="#171232"/>';
+  h+='<path d="M0 706 L0 620 Q110 596 210 616 Q320 636 404 614 L404 706 Z" fill="#12102a"/>';
+  h+='<path d="M0 706 L0 652 Q90 632 200 650 Q310 668 404 646 L404 706 Z" fill="#0e0c22"/>';
+  var gx,i;var g='<g stroke="#0a081c" stroke-width="1.1" stroke-linecap="round">';
+  var gr=lcg(29);
+  for(i=0;i<38;i++){gx=8+gr()*388;var gh=5+gr()*9,lean=(gr()-.5)*6;
+    g+='<path d="M'+gx.toFixed(1)+' 668 Q'+(gx+lean/2).toFixed(1)+' '+(668-gh*.6).toFixed(1)+' '+(gx+lean).toFixed(1)+' '+(668-gh).toFixed(1)+'" fill="none"/>';
+  }
+  h+=g+'</g>';
+  return h;
+}
+function dressAurora(s){
+  var h='<rect width="404" height="706" fill="url(#wash'+s+')"/>';
+  h+='<g class="aur-breathe" filter="url(#aur'+s+')">'
+   +'<path d="M-20 210 Q90 130 200 180 Q310 230 424 150 L424 260 Q300 320 190 262 Q80 210 -20 292 Z" fill="#6fe0d0" opacity=".13"/>'
+   +'<path d="M-20 140 Q120 80 240 128 Q340 166 424 100 L424 190 Q320 240 210 196 Q90 152 -20 214 Z" fill="#7a4a7c" opacity=".16"/>'
+   +'<path d="M-20 262 Q140 210 280 244 Q360 262 424 232 L424 292 Q330 330 220 300 Q90 268 -20 330 Z" fill="#e8c76a" opacity=".06"/>'
+   +'</g>';
+  h+=speckles(s)+'<path d="'+ridgePath(2.525,2.9417,706)+'" fill="#0e0c22"/>';
+  return h;
+}
+function cardSVG(s,dressFn){
+  return '<svg viewBox="0 0 404 706" role="img"><defs>'+washDefs(s)+'</defs>'
+   +'<g clip-path="url(#clip'+s+')">'+'<rect width="404" height="706" fill="#0a0e1f" opacity=".9"/>'
+   +dressFn(s)+fieldSVG(s)+'</g>'+chromeSVG(s)+'</svg>';
+}
+/* the full sheet (420×800): card at (8,12), arrows at the waist, ✕ on the card, the foot per option */
+function sheetSVG(s,kind){
+  var h='<svg viewBox="0 0 420 800" role="img"><defs>'+washDefs(s)
+   +'<linearGradient id="btn'+s+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2344"/><stop offset="1" stop-color="#12172f"/></linearGradient>'
+   +'<linearGradient id="ramp'+s+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff7dc"/><stop offset=".35" stop-color="#ffe08d"/><stop offset=".62" stop-color="#d7b45c"/><stop offset="1" stop-color="#9c7a28"/></linearGradient>'
+   +'</defs>';
+  h+='<rect width="420" height="800" fill="#05070f"/>';
+  h+='<g transform="translate(8,12)"><g clip-path="url(#clip'+s+')"><rect width="404" height="706" fill="#0a0e1f" opacity=".9"/>'+dressToday(s)+fieldSVG(s)+'</g>'+chromeSVG(s)+'</g>';
+  h+='<text x="30" y="376" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#0a0e1f" filter="url(#glow'+s+')" opacity=".9">‹</text>'
+   +'<text x="30" y="376" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#d7b45c">‹</text>'
+   +'<text x="390" y="376" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#0a0e1f" filter="url(#glow'+s+')" opacity=".9">›</text>'
+   +'<text x="390" y="376" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#d7b45c">›</text>';
+  h+='<text x="392" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#0a0e1f" filter="url(#glow'+s+')" opacity=".9">✕</text>'
+   +'<text x="392" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#c3cae6">✕</text>';
+  if(kind==='B'){
+    h+='<rect x="45" y="728" width="330" height="54" rx="12" fill="none" stroke="#3a4577" stroke-width="1" stroke-dasharray="5 5" opacity=".4"/>'
+     +'<text x="210" y="761" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="11" letter-spacing=".5" fill="#8a94c4">tap your card to begin</text>';
+  }else{
+    h+='<rect x="45" y="728" width="330" height="54" rx="12" fill="url(#btn'+s+')" stroke="#c9a94f" stroke-width="1.5"/>'
+     +'<rect x="49" y="732" width="322" height="46" rx="9" fill="none" stroke="rgba(201,169,79,.3)" stroke-width=".8"/>';
+    if(kind==='C'){
+      h+='<text x="210" y="761.5" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="16" letter-spacing="2.4" fill="url(#ramp'+s+')">BEGIN THE CLIMB</text>';
+    }else{
+      h+='<text x="210" y="761.5" text-anchor="middle" font-family="Georgia,serif" font-size="16" letter-spacing="2.4" fill="#f4e6bd">BEGIN THE CLIMB</text>';
+    }
+  }
+  return h+'</svg>';
+}
+/* the tap map — the sheet's input anatomy at 420×800 design units */
+function tapmapSVG(){
+  var h='<svg viewBox="0 0 420 800" role="img">';
+  h+='<rect width="420" height="800" fill="#05070f"/>';
+  h+='<rect x="0" y="0" width="420" height="12" fill="#ff8a70" opacity=".3"/>'
+   +'<rect x="0" y="12" width="8" height="706" fill="#ff8a70" opacity=".3"/>'
+   +'<rect x="412" y="12" width="8" height="706" fill="#ff8a70" opacity=".3"/>';
+  h+='<rect x="8" y="12" width="404" height="706" rx="16" fill="#e8c76a" opacity=".12" stroke="#e8c76a" stroke-opacity=".55" stroke-width="1.2"/>';
+  h+='<text x="210" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="15" letter-spacing="1.5" fill="#e8c76a" opacity=".9">SWIPE ZONE (TODAY)</text>'
+   +'<text x="210" y="322" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15" letter-spacing="1.5" fill="#ffe08d">+ BEGIN ON A CLEAN UP (NEW)</text>'
+   +'<text x="210" y="342" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="10.5" fill="#c9b676">release under 8u of travel · never mid-turn · never on a flick</text>';
+  h+='<rect x="368" y="20" width="48" height="48" rx="8" fill="#9fc4ff" opacity=".3" stroke="#9fc4ff" stroke-opacity=".7" stroke-width="1"/>'
+   +'<text x="392" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#dce6ff">✕</text>';
+  h+='<rect x="6" y="341" width="48" height="48" rx="8" fill="#9fc4ff" opacity=".3" stroke="#9fc4ff" stroke-opacity=".7" stroke-width="1"/>'
+   +'<text x="30" y="372" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#dce6ff">‹</text>';
+  h+='<rect x="366" y="341" width="48" height="48" rx="8" fill="#9fc4ff" opacity=".3" stroke="#9fc4ff" stroke-opacity=".7" stroke-width="1"/>'
+   +'<text x="390" y="372" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#dce6ff">›</text>';
+  h+='<rect x="115" y="570" width="190" height="44" rx="8" fill="#9fc4ff" opacity=".3" stroke="#9fc4ff" stroke-opacity=".7" stroke-width="1"/>'
+   +'<text x="210" y="597" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="1" fill="#dce6ff">HARD 190×44 (+44-pt pad)</text>';
+  h+='<rect x="45" y="728" width="330" height="54" rx="12" fill="none" stroke="#ff8a70" stroke-width="1.2" stroke-dasharray="6 5" opacity=".8"/>'
+   +'<rect x="0" y="718" width="420" height="82" fill="none" stroke="#ff8a70" stroke-width="1" stroke-dasharray="3 5" opacity=".5"/>'
+   +'<text x="210" y="756" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="1" fill="#ff8a70">BEGIN + CATCH — RETIRED IN B (C KEEPS BOTH)</text>';
+  h+='<text x="210" y="9.5" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#ffb4a0">VEIL — CLOSES (12u crown band · 8u side hairlines)</text>';
+  return h+'</svg>';
+}
+
+/* ============ mount ============ */
+function put(id,html,cap){var el=document.getElementById(id);if(el)el.innerHTML=html+(cap?'<div class="cap">'+cap+'</div>':'')}
+put('m-today',cardSVG('t',dressToday),'TODAY — THE STRETCHED WASH UNDER THE LIVING FIELD');
+put('m-d1',cardSVG('d1',dressHunt));
+put('m-d2',cardSVG('d2',dressMeadow));
+put('m-d3',cardSVG('d3',dressAurora));
+put('m-sheetB',sheetSVG('sb','B'),'B — THE BUTTON GONE; THE WHISPER IN THE FREED BAND');
+put('m-sheetC',sheetSVG('sc','C'),'C — THE STAMPED BUTTON (A2) + THE CARD-TAP LIVE');
+put('m-tapmap',tapmapSVG(),'THE SHEET\'S TAP ANATOMY — TOPONLY ORDER, REAL GEOMETRY');
+
+/* the shooting star — the card's own cadence (first 3.8–7s, then 8–15s), right-and-down, easeOut travel / easeIn fade */
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var groups=[].slice.call(document.querySelectorAll('g.shoot'));
+  groups.forEach(function(g,gi){
+    function fly(){
+      var sx=202+(-.42+Math.random()*.5)*404, sy=353+(-.46+Math.random()*.34)*706;
+      var dx=200+Math.random()*140, dy=80+Math.random()*80, t0=null;
+      var kids=[].slice.call(g.children);
+      function step(ts){
+        if(t0===null)t0=ts;
+        var p=Math.min(1,(ts-t0)/800), eo=1-Math.pow(1-p,3), ei=p*p;
+        var hx=sx+dx*eo, hy=sy+dy*eo;
+        kids.forEach(function(k,i){var lag=i*.055;var q=Math.max(0,eo-lag);k.setAttribute('cx',sx+dx*q);k.setAttribute('cy',sy+dy*q)});
+        g.setAttribute('opacity',(1-ei).toFixed(3));
+        if(p<1)requestAnimationFrame(step);
+        else{g.setAttribute('opacity','0');setTimeout(fly,8000+Math.random()*7000)}
+      }
+      requestAnimationFrame(step);
+    }
+    setTimeout(fly,3800+Math.random()*3200+gi*900);
+  });
+})();
+
+/* ============ verdicts ============ */
+var QSL=[
+ {id:'q1',t:'THE DRESS',d:'Which night does the unsigned card wear? All three keep the living field (22 breathing stars, 3 slow sparks, the shooting star) and the reading bands; all three retire the stretched 160×240 wash for a bake at the card’s own resolution. Combinations (the veil over the hunt or the meadow) go in notes.',o:['D1 — THE WHOLE HUNT','D2 — THE MEADOW','D3 — THE AURORA VEIL','HOLD — STAYS PLAIN']},
+ {id:'q2',t:'BEGIN, OR THE CARD',d:'A — the button stays and its letters finally shine. B — the button goes; a clean tap anywhere on the card begins (tap anatomy and honest costs in §III, the endless door’s instant rise named). C — both: the shined button as the teacher and anchor, the card answering the thumb too.',o:['A — SHINE ONLY','B — CARD ONLY','C — BOTH ★ RECOMMENDED','HOLD']},
+ {id:'q3',t:'HOW LOUD THE SHINE',d:'If A or C: A1 — a light sweeps today’s parchment ink · A2 — the wordmark’s gold-letterpress stamp, still · A3 — the stamp with the slow glimmer crossing it (~7s, stilled by ?twinkle=0 / reduced motion).',o:['A1 — WHISPER','A2 — VOICE','A3 — SHINE']}
+];
+var VKEY='ssOpenSkyDress.v1';
+var V={};try{V=JSON.parse(localStorage.getItem(VKEY)||'{}')}catch(e){}
+function saveV(){try{localStorage.setItem(VKEY,JSON.stringify(V))}catch(e){}
+  var n=0;QSL.forEach(function(q){if(V[q.id])n++});
+  document.getElementById('ruled').textContent=n;}
+(function(){
+  QSL.forEach(function(q,i){
+    var host=document.getElementById(q.id+'host');if(!host)return;
+    var h='<div class="q" id="'+q.id+'"><div class="qt"><b>'+(i+1)+'</b> · '+q.t+'</div><div class="qd">'+q.d+'</div><div class="chips">'
+     +q.o.map(function(o){return '<button class="chip" data-q="'+q.id+'" data-o="'+o.replace(/"/g,'&quot;')+'">'+o+'</button>'}).join('')
+     +'</div><input class="qnote" data-q="'+q.id+'" placeholder="notes…"></div>';
+    host.innerHTML=h;
+  });
+  [].forEach.call(document.querySelectorAll('.chip'),function(c){
+    c.onclick=function(){
+      var q=c.dataset.q;V[q]=c.dataset.o;
+      [].forEach.call(document.querySelectorAll('.chip[data-q="'+q+'"]'),function(x){x.classList.toggle('on',x===c)});
+      saveV();
+    };
+    if(V[c.dataset.q]===c.dataset.o)c.classList.add('on');
+  });
+  [].forEach.call(document.querySelectorAll('.qnote'),function(n){
+    n.value=V['note_'+n.dataset.q]||'';
+    n.addEventListener('input',function(){V['note_'+n.dataset.q]=n.value;saveV()});
+  });
+  saveV();
+})();
+function copyVerdicts(){
+  var t='THE OPEN SKY, DRESSED verdicts — 2026-09-10\n';
+  QSL.forEach(function(q,i){
+    t+=(i+1)+') '+q.t+': '+(V[q.id]||'—')+(V['note_'+q.id]?(' — '+V['note_'+q.id]):'')+'\n';
+  });
+  function done(){document.getElementById('copied').textContent='copied ✓';setTimeout(function(){document.getElementById('copied').textContent=''},2000)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){prompt('Copy:',t)})}
+  else prompt('Copy:',t);
+}
+</script>
+</body>
+</html>
